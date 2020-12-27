@@ -48,31 +48,29 @@ function Feed() {
                 </div>
                 <div className="feed__inputOptions">
                     <InputOption Icon={ImageIcon} title='Photo' 
-                    color="#70b4f9"/> 
-                    <InputOption Icon={SubscriptionsRounded} title='Event' 
-                    color="#C0CBCD"/> 
+                    color="#70B5F9"/> 
+                    <InputOption Icon={SubscriptionsRounded} title='Video' 
+                    color="#E7A33E"/> 
                     <InputOption Icon={EventNote} title='Event' 
-                    color="#70b4f9"/> 
+                    color="#C0CBCD"/> 
                     <InputOption Icon={CalendarViewDay} title='Write article' 
                     color="#7FC15E"/> 
 
                 </div>
             </div>
-            {posts.map(({ id, data: {name, description, message, photoUrl}}) =>{
+            {/* posts  */}
+            {posts.map(({ id, data: {name, description, message, 
+            photoUrl } }) => (
                 <Post 
                     key ={id}
                     name={name}
                     description={description}
                     message={message}
                     photoUrl={photoUrl}
-                
                 />
-            })}
-
-        
-
+            ))}
         </div> 
-    )
+    );
 }
 
 export default Feed
