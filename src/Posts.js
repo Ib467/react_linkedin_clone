@@ -18,7 +18,7 @@ function Posts({ name, description, message, photoUrl}) {
                 </div>
             </div>
             <div className="post__body">
-                <p> Wow this worked!</p>
+                <p> {message}</p>
             </div>
             <div className="post__buttons">
                 <InputOption Icon={ThumbUpAltOutlinedIcon} title="like"
