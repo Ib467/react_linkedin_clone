@@ -1,19 +1,22 @@
 import React, { useEffect } from 'react';
 import { useSelector} from 'react-redux';
 import { auth } from './firebase';
-import { selectUser } from "./features/userSlice"
+import { login, logout, selectUser } from "./features/userSlice"
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import Feed from './Feed'
 import Login from './Login'
+import { useDispatch } from "react-redux";
+
 
 function App() { 
 
   //pull user from datastore
-  const user = useSelector(selectUser)
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    auth.onAutStateChanged(userAuth => {
+    auth.onAuthStateChanged((userAuth) => {
       if (userAuth){
         //user is logged in
         dispatch(
@@ -22,12 +25,13 @@ function App() {
             uid: userAuth.uid,
             displayName: userAuth.displayName,
             photoUrl: userAuth.photoUrl,
-        }))
+        })
+        );
       } else{
         //user is logged out
         dispatch(logout());
       }
-    })
+    });
   }, [])
 
   return (

@@ -23,21 +23,25 @@ function Login() {
         }
 
         //create a user with email & password
+        console.log(password);
         auth.createUserWithEmailAndPassword(email,password)
         .then((userAuth) => {  
-            userAuth.user.updateProfile({
+            userAuth.user
+              .updateProfile({
                 displayName: name,
                 photoURL: profilePic,
             })
             .then(() => {  ///then push user into redux store
-                dispatch(login({
+                dispatch(
+                  login({
                     email: userAuth.user.email,
                     uid: userAuth.user.uid,
                     displayName: name,
-                    photoUrl: profilePic
+                    photoUrl: profilePic,
+                    password: password
                 }))
             })
-        }).catch(error => alert(error.message))
+        }).catch(error => alert(error.message));
     }
  
 
@@ -67,7 +71,10 @@ function Login() {
                     type="email" 
                     placeholder="Email" 
                  />
-                <input type="password" placeholder="Password" />
+                <input type="password" placeholder="Password" value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+
+                />
                 <button type="submit" onClick={loginToApp}>Sign In</button>
 
             </form>
