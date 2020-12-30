@@ -34,6 +34,7 @@ function App() {
     });
   }, [])
 
+  
   return (
     <div className="app">
       <Header /> 
@@ -46,9 +47,6 @@ function App() {
       </div>
       
       )}
-      
-      
-
     </div>
   );
 }

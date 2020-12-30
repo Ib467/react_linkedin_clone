@@ -14,16 +14,25 @@ function Login() {
     //login to app
     const loginToApp = (e) => {
         e.preventDefault();
-        
-    }
+
+        auth.signInWithEmailAndPassword(email, password).then(
+          (userAuth) => {
+              dispatch(login({
+                email: userAuth.user.email,
+                uid: userAuth.user.uid,
+                displayName: userAuth.user.displayName,
+                profileUrl: userAuth.user.photoUrl,
+             })
+          );
+        }).catch(error => alert(error))
+    };
     //register to app
     const register = () => {
         if (!name) {
             return alert("Please enter a full name!")
         }
 
-        //create a user with email & password
-        console.log(password);
+        //cow reate a user with email & password
         auth.createUserWithEmailAndPassword(email,password)
         .then((userAuth) => {  
             userAuth.user
@@ -73,11 +82,10 @@ function Login() {
                  />
                 <input type="password" placeholder="Password" value={password}
                     onChange={(e) => setPassword(e.target.value)}
-
                 />
                 <button type="submit" onClick={loginToApp}>Sign In</button>
-
             </form>
+
             <p> Not a member ? 
                 <span className="login__register" onClick={ register }> Register now</span>
             </p>
