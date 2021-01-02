@@ -17,6 +17,7 @@ function App() {
 
   useEffect(() => {
     auth.onAuthStateChanged((userAuth) => {
+      //console.log('logged in')
       if (userAuth){
         //user is logged in
         dispatch(
@@ -25,6 +26,7 @@ function App() {
             uid: userAuth.uid,
             displayName: userAuth.displayName,
             photoUrl: userAuth.photoUrl,
+          
         })
         );
       } else{
@@ -32,7 +34,7 @@ function App() {
         dispatch(logout());
       }
     });
-  }, [])
+  }, []);
 
 
   return (
