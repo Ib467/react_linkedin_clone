@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
-import { useSelector} from 'react-redux';
+import { useSelector, useDispatch} from 'react-redux';
 import { auth } from './firebase';
 import { login, logout, selectUser } from "./features/userSlice"
 import Header from "./Header";
+import { auth } from './firebase'
 import Sidebar from "./Sidebar";
 import Feed from './Feed'
 import Login from './Login'
-import { useDispatch } from "react-redux";
-
+import './App.css'
 
 function App() { 
 
