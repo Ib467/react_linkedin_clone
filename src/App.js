@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch} from 'react-redux';
-import { auth } from './firebase';
 import { login, logout, selectUser } from "./features/userSlice"
 import Header from "./Header";
 import { auth } from './firebase'
