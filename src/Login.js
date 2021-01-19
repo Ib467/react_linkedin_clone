@@ -12,6 +12,10 @@ function Login() {
     const dispatch = useDispatch();
 
     //login to app
+
+    
+
+
     const loginToApp = (e) => {
         e.preventDefault();
 
@@ -26,6 +30,7 @@ function Login() {
           );
         }).catch(error => alert(error))
     };
+    
     //register to app
     const register = () => {
         if (!name) {
